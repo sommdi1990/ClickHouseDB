@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 
@@ -10,8 +10,11 @@ RUN go mod download
 COPY . ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o server ./main.go
 
-FROM gcr.io/distroless/base-debian12
+FROM alpine:3.20
 WORKDIR /app
+# Create non-root user (uid/gid 65532 similar to distroless nonroot)
+RUN addgroup -g 65532 appgroup \
+    && adduser -D -H -u 65532 -G appgroup appuser
 COPY --from=builder /app/server /app/server
 EXPOSE 8000
 USER 65532:65532
