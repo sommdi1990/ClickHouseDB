@@ -1,0 +1,7 @@
+github.com/ClickHouse/clickhouse-go/v2 v2.20.3 h1:3wvbvVh1xw8m7gCyja3k2Q6qJgO8b1q6mQfK7r7gN4g=
+github.com/ClickHouse/clickhouse-go/v2 v2.20.3/go.mod h1:0Jr5i7iO3L8kqGxTQpV1oT6U0e7W0pB2bYKbP9qslq0=
+github.com/gin-gonic/gin v1.10.0 h1:V6xLhB1ZlCLrm7XcVr9gREzZ0Qe2FoXRNt6JpQg27n8=
+github.com/gin-gonic/gin v1.10.0/go.mod h1:2tV0VnA4Yv8nDp1nTITf+0uR7HBd+7YfqpQf+QJYQpI=
+github.com/bytedance/sonic v1.11.6 h1:oUHc5HC2Vow2I7bG+vau/vGzCCb7r5mDk9S8gFQ5G9M=
+github.com/bytedance/sonic v1.11.6/go.mod h1:iNso8HkH0PS3IdUo2Euqo6Ix0VtH0GPQYJi2wDyYjmk=
+
