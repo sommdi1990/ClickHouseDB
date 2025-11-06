@@ -20,6 +20,16 @@ services:
       timeout: 3s
       retries: 20
 
+  tabix:
+    image: spoonest/clickhouse-tabix-web-client:latest
+    container_name: music_school_tabix
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+
   app:
     build:
       context: ./app

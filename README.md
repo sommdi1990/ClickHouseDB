@@ -15,6 +15,7 @@ docker compose up -d --build
 
 - ClickHouse HTTP: `http://localhost:8123/`
 - API: `http://localhost:8000/health`
+- Tabix (رابط وب ClickHouse): `http://localhost:8080`
 
 3) تست‌های سریع:
 
@@ -47,6 +48,19 @@ curl -X POST http://localhost:8000/students \
 
 - مستندات کامل به زبان فارسی در پوشه‌ی `ClickHouseDB.wiki` موجود است.
 - از صفحه‌ی [Home](ClickHouseDB.wiki/Home.md) شروع کنید.
+
+## رابط گرافیکی وب (Tabix)
+
+- آدرس دسترسی: `http://localhost:8080`
+- ساخت اتصال جدید در Tabix:
+    - Host: `clickhouse` (از داخل شبکه Docker) یا `localhost`
+    - Port: `8123`
+    - User: `default`
+    - Password: خالی در لوکال (یا طبق تنظیمات شما)
+    - Database: `music_school`
+
+نکته: اگر برای کاربر `default` رمز گذاشته‌اید، همان رمز را در Tabix وارد کنید. اگر از سرویس دیگری در همان شبکه Docker
+وصل می‌شوید، نام سرویس `clickhouse` را به‌عنوان میزبان قرار دهید.
 
 ## توقف و پاک‌سازی
 
