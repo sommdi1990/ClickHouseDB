@@ -1,7 +1,12 @@
-# پروژه نمونه آموزشگاه موسیقی با ClickHouse
+# Music school API with Go and ClickHouse
 
-این مخزن شامل یک نمونه‌ی ساده از سامانه آموزشگاه موسیقی است که با ClickHouse به عنوان دیتابیس و یک سرویس API مبتنی بر
-Go (Gin) پیاده‌سازی شده و به کمک Docker اجرا می‌شود.
+A Gin service records students and enrollments and exposes the course catalog over HTTP. The schema separates the school entities from enrollment data, and the seed script supplies instruments for the sample dataset.
+
+Follow POST /students and POST /enrollments in the Go entry point, then compare the fields written by each handler with the SQL definitions. The students and courses read paths order their results by creation time. The schema and sample rows are maintained in separate files.
+
+- [main.go](app/main.go)
+- [01_schema.sql](clickhouse/init/01_schema.sql)
+- [02_seed.sql](clickhouse/init/02_seed.sql)
 
 ## اجرا به صورت سریع
 
@@ -35,20 +40,6 @@ curl -X POST http://localhost:8000/students \
       }'
 ```
 
-## ساختار پروژه
-
-- `docker-compose.yml`: تعریف سرویس‌ها
-- `clickhouse/init/`: اسکریپت‌های ساخت اسکیما و داده‌ی نمونه
-- `app/`: سرویس Go/Gin
-    - `Dockerfile`
-    - `go.mod`, `go.sum`
-    - `main.go`: مسیرهای API و اتصال ClickHouse
-
-## ویکی و مستندات
-
-- مستندات کامل به زبان فارسی در پوشه‌ی `ClickHouseDB.wiki` موجود است.
-- از صفحه‌ی [Home](ClickHouseDB.wiki/Home.md) شروع کنید.
-
 ## رابط گرافیکی وب (Tabix)
 
 - آدرس دسترسی: `http://localhost:8080`
@@ -62,16 +53,6 @@ curl -X POST http://localhost:8000/students \
 نکته: اگر برای کاربر `default` رمز گذاشته‌اید، همان رمز را در Tabix وارد کنید. اگر از سرویس دیگری در همان شبکه Docker
 وصل می‌شوید، نام سرویس `clickhouse` را به‌عنوان میزبان قرار دهید.
 
-## توقف و پاک‌سازی
-
-```bash
-docker compose down
-# حذف کامل داده‌های لوکال (اختیاری)
-docker volume rm clickhousedb_clickhouse_data
-```
-
 ## مجوز
 
 MIT
-
-
